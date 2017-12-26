@@ -32,6 +32,16 @@ public class LoginUiTest extends ActivitiesApp {
     @Test
     public void chooseCountry() throws UiObjectNotFoundException {
         codeCountryField().clickAndWaitForNewWindow();
-        assertFalse("Action bar root not enabled", actionBarRoot().isEnabled());
+        assertTrue("Action bar root not enabled", actionBarRoot().isEnabled());
+    }
+
+    @Test
+    public void checkTextCounter() throws UiObjectNotFoundException {
+        codeCountryField().clickAndWaitForNewWindow();
+
+        assertTrue("Not valid text number region KG", RegionNumberText1(0)
+                .getText().contains("Кыргызстан (+996)"));
+        assertTrue("Not valid text number region RU", RegionNumberText1(1)
+                .getText().contains("Россия (+7)"));
     }
 }
